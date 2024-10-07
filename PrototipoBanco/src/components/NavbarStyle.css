@@ -20,6 +20,47 @@ img {
 }
 
 .offcanvas, .offcanvas a{
+    background-color: #fff;
+    color: #000;
+}
+
+.offcanvas-header {
     background-color: #EA0444;
+    height: 5em;
+    width: 100em;
     color: #fff;
 }
+
+
+.perfil{
+    display: flex;
+    flex-direction: row;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.perfil img {
+    height: 100px;
+    border-radius: 100%;
+    box-shadow: 5px -5px #EA0444;
+}
+
+.UserInfo{
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+}
+
+#sair{
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-item{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+

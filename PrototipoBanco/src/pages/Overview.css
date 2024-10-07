@@ -1,3 +1,8 @@
+.body{
+    background-color: #e4e4e4;
+  }
+  
+
 .welcome {
     margin-top: 5em;
     text-align: center;
@@ -32,6 +37,10 @@
     padding-left: 15px;
     padding-right: 15px;
     transition: 0.25s;
+    cursor: pointer;
+}
+
+.miniMenu label{
     cursor: pointer;
 }
 
@@ -72,7 +81,7 @@
     border-radius: 43px;
     width: 50%;
     height: 13em;
-    display: flex; /* Alteração para alinhar os elementos horizontalmente */
+    display: flex; 
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
@@ -119,11 +128,10 @@
     transform: scale(0.95);
 }
 
-
-
-
 .footer{
     background-color: #EA0444;
     height: 200px;
     margin-top: 100px;
 }
+
+

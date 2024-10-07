@@ -1,42 +1,49 @@
 import React, { useEffect, useState } from 'react';
 import './Overview.css'; 
 
-
 import { FaPix } from "react-icons/fa6";
 import { GrMoney } from "react-icons/gr";
 import { BsGraphUp } from "react-icons/bs";
 import { FaBagShopping } from "react-icons/fa6";
 import { FaMoneyCheck } from "react-icons/fa";
 import { FaHandsHelping } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 
 const Overview = () => {
-  const [user, setUser] = useState(null);
-
-  const fetchRandomUser = async () => {
+  const [userAccount, setUserAccount] = useState(null);
+  const fetchUserAccount = async () => {
     try {
-      const response = await fetch('https://randomuser.me/api');
+      const userCpf = "2"; 
+      
+      const response = await fetch('http://localhost:5000/accounts'); 
       const data = await response.json();
-      setUser(data.results[0]);
+
+      const account = data.find(account => account.cpf === userCpf);
+
+      if (account) {
+        setUserAccount(account);
+      } else {
+        console.error("Conta não encontrada!");
+      }
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao buscar a conta:", error);
     }
   };
 
   useEffect(() => {
-    fetchRandomUser();
+    fetchUserAccount();
   }, []);
 
-  if (!user) {
-    return <p>Carregando...</p>;
+  if (!userAccount) {
+    return <p>Carregando informações da conta...</p>;
   }
 
   return (
     <div>
-
       <div className="container">
         <div className="welcome">
           <div className="text-content">
-            <h1>Bem vindo, {user.name.first}!</h1>
+            <h1>Bem vindo (a)</h1>
             <a>O que deseja fazer hoje?</a>
           </div>
         </div>
@@ -47,16 +54,16 @@ const Overview = () => {
             <label>Área Pix</label>
           </div>
           <div className="miniMenu">
-            <FaPix className="pixLogo" />
-            <label>Área Pix</label>
+            <BsGraphUp className="pixLogo" />
+            <label>Investimentos</label>
           </div>
           <div className="miniMenu">
             <FaMoneyCheck className="pixLogo" />
             <label>Cartões</label>
           </div>
           <div className="miniMenu">
-            <FaPix className="pixLogo" />
-            <label>Área Pix</label>
+            <FaUserCircle className="pixLogo" />
+            <label>Configurar Perfil</label>
           </div>
         </div>
 
@@ -68,7 +75,7 @@ const Overview = () => {
           <div className="cardGroup">
             <div className="cardInfo">
               <div className="balance">
-                <h1>R$1000,00</h1>
+                <h1>R${userAccount.saldo?.toFixed(2) || "0,00"}</h1>
                 <GrMoney className="IconCard" />
               </div>
               <label>Seu saldo</label>
@@ -116,7 +123,6 @@ const Overview = () => {
       </div>
 
       <div className='footer'>
-
       </div>
     </div>
   );

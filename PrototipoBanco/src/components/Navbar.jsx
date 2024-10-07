@@ -1,8 +1,31 @@
 import React from 'react';
 import Logo from '../assets/TransparenteAzul.png';
 import './NavbarStyle.css';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
+
+  const [user, setUser] = useState(null);
+
+  const fetchRandomUser = async () => {
+    try {
+      const response = await fetch('https://randomuser.me/api');
+      const data = await response.json();
+      setUser(data.results[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRandomUser();
+  }, []);
+
+  if (!user) {
+    return <p>Carregando...</p>;
+  }
+
+
   return (
     <div>
       <nav className="navbar">
@@ -16,16 +39,26 @@ const Navbar = () => {
 
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <img src={Logo}/><h5>ViteBank®</h5>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div className="offcanvas-body">
+            <div className='perfil'>
+              <img id='UserIcon' src={user.picture.large}/>
+              
+              <div className='UserInfo'>
+                <label>{user.name.first} {user.name.last}</label>
+                <label>Conta Corrente</label>
+                <label>Agencia 0456 </label>
+              </div>
+
+            </div>
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">Home</a>
+                <a className="nav-link" href="#">Suporte</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <a id='sair' href="#">Sair</a>
               </li>
             </ul>
           </div>
