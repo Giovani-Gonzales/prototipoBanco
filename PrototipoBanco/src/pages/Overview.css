@@ -1,0 +1,129 @@
+.welcome {
+    margin-top: 5em;
+    text-align: center;
+}
+
+.text-content {
+    color: #011D62;
+    margin-left:1.5em;
+}
+
+.text-content h1 {
+    font-weight: bold;
+}
+
+
+.title {
+    margin-top: 5em;
+}
+
+.miniMenu {
+    background-color: #EA0444; 
+    height: 10em; 
+    width: 10em; 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; /* Alinhamento à esquerda */
+    color: white;
+    border-radius: 1em; 
+    text-align: left; 
+    font-weight: bold;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.miniMenu:hover {
+    background-color: #011D62; 
+    transform: scale(0.95);
+}
+
+.quickMenu {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 5em;
+}
+
+.pixLogo {
+    color: #fff;
+    font-size: 30px;
+}
+
+.miniMenu label {
+    margin-bottom: 10px;
+    font-size: 1em;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.cardGroup {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 5em;
+}
+
+.cardInfo {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 43px;
+    width: 50%;
+    height: 13em;
+    display: flex; /* Alteração para alinhar os elementos horizontalmente */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.balance {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.balance h1 {
+    color: #EA0444;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.IconCard {
+    color: #EA0444;
+    font-size: 25px;
+}
+
+.cardInfo label {
+    color: #BDBDBD;
+    font-size: 20px;
+}
+
+.cardInfo button {
+    background-color: #EA0444; 
+    color: white;
+    border: none;
+    padding: 1em;
+    border-radius: 2em;
+    width: 150px;
+    justify-content: center;
+    margin-top: 3em;
+    font-size: small;
+    transition: 0.25s;
+}
+
+.cardInfo button:hover {
+    background-color: #011D62; 
+    transform: scale(0.95);
+}
+
+
+
+
+.footer{
+    background-color: #EA0444;
+    height: 200px;
+    margin-top: 100px;
+}

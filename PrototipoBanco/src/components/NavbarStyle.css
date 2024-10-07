@@ -1,0 +1,25 @@
+.navbar {
+    background-color: #EA0444;
+    height: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+img {
+    height: 3em;
+}
+
+
+.navbar-toggler {
+    position: absolute;
+    right: 1em; 
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+.offcanvas, .offcanvas a{
+    background-color: #EA0444;
+    color: #fff;
+}
