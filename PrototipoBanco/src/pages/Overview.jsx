@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Overview.css'; 
+
+import Navbar from '../components/Navbar';
 
 import { FaPix } from "react-icons/fa6";
 import { GrMoney } from "react-icons/gr";
@@ -10,36 +12,13 @@ import { FaHandsHelping } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 
 const Overview = () => {
-  const [userAccount, setUserAccount] = useState(null);
-  const fetchUserAccount = async () => {
-    try {
-      const userCpf = "2"; 
-      
-      const response = await fetch('http://localhost:5000/accounts'); 
-      const data = await response.json();
-
-      const account = data.find(account => account.cpf === userCpf);
-
-      if (account) {
-        setUserAccount(account);
-      } else {
-        console.error("Conta não encontrada!");
-      }
-    } catch (error) {
-      console.error("Erro ao buscar a conta:", error);
-    }
+  const userAccount = {
+    saldo: 4763, 
   };
-
-  useEffect(() => {
-    fetchUserAccount();
-  }, []);
-
-  if (!userAccount) {
-    return <p>Carregando informações da conta...</p>;
-  }
 
   return (
     <div>
+      <Navbar />
       <div className="container">
         <div className="welcome">
           <div className="text-content">
@@ -122,8 +101,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className='footer'>
-      </div>
+      <div className='footer'></div>
     </div>
   );
 };

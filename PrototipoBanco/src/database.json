@@ -1,34 +1,20 @@
 {
   "accounts": [
     {
-      "id": "0e28",
-      "cpf": "92836582953",
-      "senha": "123456",
-      "agencia": 1260,
-      "numeroConta": 33545921
+      "id": "703f",
+      "cpf": "admin",
+      "senha": "admin",
+      "agencia": 0,
+      "numeroConta": 0,
+      "saldo": 4763
     },
     {
-      "id": "4fd1",
-      "cpf": "2312321321",
-      "senha": "123",
-      "agencia": 6144,
-      "numeroConta": 91283746
-    },
-    {
-      "id": "59a7",
-      "cpf": "1",
-      "senha": "1",
-      "agencia": 3944,
-      "numeroConta": 47458563,
-      "saldo": 634
-    },
-    {
-      "id": "6c80",
-      "cpf": "2",
-      "senha": "2",
-      "agencia": 3377,
-      "numeroConta": 31233476,
-      "saldo": 6247
+      "id": "2f5c",
+      "cpf": "40956148952",
+      "senha": "8008Paranoa",
+      "agencia": 6776,
+      "numeroConta": 86406451,
+      "saldo": 2979
     }
   ]
 }

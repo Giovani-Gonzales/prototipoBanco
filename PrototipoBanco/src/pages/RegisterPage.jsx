@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import './LoginPage.css';
 import Logo from '../assets/TransparenteRosa.png';
+import { Link, useNavigate} from 'react-router-dom'
 
 const LoginPage = () => {
   const [verSenha, setVerSenha] = useState(false);
@@ -9,15 +10,14 @@ const LoginPage = () => {
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
-  // Função para gerar número aleatório dentro de um intervalo
   const gerarNumeroAleatorio = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
-  // Geração de agência, número da conta e saldo inicial
+
   const agencia = gerarNumeroAleatorio(1000, 9999);  
   const numeroConta = gerarNumeroAleatorio(10000000, 99999999); 
-  const saldoInicial = gerarNumeroAleatorio(100, 10000); // Gera saldo entre R$100 e R$10.000
+  const saldoInicial = gerarNumeroAleatorio(100, 10000); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +27,6 @@ const LoginPage = () => {
       return;
     }
 
-    // Novo usuário com saldo inicial
     const novoUsuario = { cpf, senha, agencia, numeroConta, saldo: saldoInicial };
 
     try {
@@ -57,10 +56,9 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="page-container">
-      <div className='Background'></div>
+    <div className="Logincontainer">
 
-      <div className='card'>
+      <div className='Logincard'>
         <img className='logo' src={Logo} alt="Logo" />
 
         <form onSubmit={handleSubmit}>
@@ -101,10 +99,10 @@ const LoginPage = () => {
             </span>
           </div>
 
-          <button type="submit" >Criar conta</button>
+          <button className='LoginButton' type="submit" >Criar conta</button>
         </form>
 
-        <a href='#' className="login-link">Entrar na minha conta</a>
+        <Link to="/login" className="login-link">Entrar na minha conta</Link>
       </div>
     </div>
   );

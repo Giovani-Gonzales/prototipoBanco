@@ -3,6 +3,8 @@ import Logo from '../assets/TransparenteAzul.png';
 import './NavbarStyle.css';
 import { useState, useEffect } from 'react';
 
+import { Link} from 'react-router-dom'
+
 const Navbar = () => {
 
   const [user, setUser] = useState(null);
@@ -58,7 +60,7 @@ const Navbar = () => {
                 <a className="nav-link" href="#">Suporte</a>
               </li>
               <li className="nav-item">
-                <a id='sair' href="#">Sair</a>
+                <Link id='sair' to="/login">Sair</Link>
               </li>
             </ul>
           </div>

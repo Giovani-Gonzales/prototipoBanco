@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import './LoginPage.css';
 import Logo from '../assets/TransparenteRosa.png';
+import { Link, useNavigate} from 'react-router-dom'
 
 const LoginPage = () => {
   const [cpf, setCpf] = useState('');
@@ -11,8 +12,11 @@ const LoginPage = () => {
   const [numeroConta, setNumeroConta] = useState('');
   const [erro, setErro] = useState('');
 
+  const MudaPagina = useNavigate()
+
   function MostrarSenha() {
     setVerSenha(!verSenha);
+    
   }
 
   const handleSubmit = async (e) => {
@@ -25,6 +29,8 @@ const LoginPage = () => {
       if (data.length > 0) {
 
         alert("Login bem-sucedido!");
+        MudaPagina("/overview")
+        
       } else {
 
         setErro("Informações inválidas. Verifique seus dados.");
@@ -36,11 +42,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <div className='Background'></div>
+    <div className='Logincontainer'>
 
-      <div className='card'>
-        <img className='logo' src={Logo} alt="Logo" />
+      <div className='Logincard'>
+        <img className='Loginlogo' src={Logo} alt="Logo" />
 
         <form onSubmit={handleSubmit}>
           <label>CPF</label>
@@ -49,6 +54,7 @@ const LoginPage = () => {
             value={cpf}
             onChange={(e) => setCpf(e.target.value)}
             placeholder="Digite o CPF"
+            required
           />
           
           <label>N° da conta</label>
@@ -65,6 +71,7 @@ const LoginPage = () => {
             value={agencia}
             onChange={(e) => setAgencia(e.target.value)}
             placeholder="Digite o N° da agência"
+            required
           />
 
           <label>Senha</label>
@@ -74,6 +81,7 @@ const LoginPage = () => {
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               placeholder="Digite sua senha"
+              required
             />
             <span className='icon' onClick={MostrarSenha}>
               {verSenha ? <FaRegEyeSlash /> : <FaRegEye />}
@@ -82,10 +90,10 @@ const LoginPage = () => {
 
           {erro && <p className='erro'>{erro}</p>}
 
-          <button type="submit">Entrar</button>
+          <button className='LoginButton' type="submit">Entrar</button>
         </form>
 
-        <a href=''>Criar uma conta</a>
+        <Link to="/register" className="login-link">Criar uma conta</Link>
       </div>
     </div>
   );
