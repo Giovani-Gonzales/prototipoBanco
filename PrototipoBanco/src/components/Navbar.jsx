@@ -55,12 +55,12 @@ const Navbar = () => {
               </div>
 
             </div>
-            <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item">
+            <ul className="navbar-nav justify-content-end flex-grow-1">
+              <li>
                 <a className="nav-link" href="#">Suporte</a>
               </li>
-              <li className="nav-item">
-                <Link id='sair' to="/login">Sair</Link>
+              <li>
+                <Link className="nav-link" id='sair' to="/login">Sair</Link>
               </li>
             </ul>
           </div>
