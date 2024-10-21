@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { Link} from 'react-router-dom'
+
 import './Overview.css'; 
 
 import Navbar from '../components/Navbar';
@@ -15,7 +18,6 @@ const Overview = () => {
   const userAccount = {
     saldo: 4763, 
   };
-
   return (
     <div>
       <Navbar />
@@ -59,7 +61,7 @@ const Overview = () => {
               </div>
               <label>Seu saldo</label>
               <div className="footerCard">
-                <button>Ver Extrato</button>
+                <Link className='linkButton'>Ver Extrato</Link>
               </div>
             </div>
 
@@ -70,7 +72,7 @@ const Overview = () => {
               </div>
               <label>Invista seu dinheiro e faça render já!</label>
               <div className="footerCard">
-                <button>Ver Extrato</button>
+                <Link className='linkButton'>Ver Extrato</Link>
               </div>
             </div>
           </div>
@@ -83,7 +85,7 @@ const Overview = () => {
               </div>
               <label>Aproveite descontos exclusivos!</label>
               <div className="footerCard">
-                <button>Ver Extrato</button>
+                <Link className='linkButton' to="/viteshop">Visitar Agora!</Link>
               </div>
             </div>
 
@@ -94,7 +96,7 @@ const Overview = () => {
               </div>
               <label>Faça seu empréstimo agora!</label>
               <div className="footerCard">
-                <button>Ver Extrato</button>
+                <Link className='linkButton'>Ver Extrato</Link>
               </div>
             </div>
           </div>

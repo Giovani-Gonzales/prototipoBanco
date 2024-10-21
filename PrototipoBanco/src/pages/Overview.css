@@ -110,7 +110,7 @@
     font-size: 20px;
 }
 
-.cardInfo button {
+.cardInfo .linkButton {
     background-color: #EA0444; 
     color: white;
     border: none;
@@ -121,11 +121,19 @@
     margin-top: 3em;
     font-size: small;
     transition: 0.25s;
+    text-decoration: none;
 }
 
-.cardInfo button:hover {
-    background-color: #011D62; 
+.cardInfo .boxLink{
     transform: scale(0.95);
+}
+
+.cardInfo .boxLink:hover{
+    transition: 0.25s;
+}
+
+.cardInfo .linkButton:hover {
+    background-color: #011D62; 
 }
 
 .footer{

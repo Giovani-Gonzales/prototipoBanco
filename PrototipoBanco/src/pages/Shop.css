@@ -1,0 +1,60 @@
+.cardItemGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em; 
+    margin-top: 5em;
+  }
+
+.itemCard{
+    text-align: center;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 2em;
+    width: 25em;
+}
+
+.itemCardHeader img{
+    width: 200px;
+    height: 200px;
+}
+
+.itemCardHeader{
+    padding: 20px;
+    text-align: center;
+}
+
+.itemCardBody{
+    text-align: left;
+    font-weight: bold;
+    color: #011D62;
+}
+
+
+.itemCardFooter{
+    text-align: left;
+}
+
+.itemCardFooter button {
+    background-color: #EA0444; 
+    color: white;
+    border: none;
+    padding: 1em;
+    border-radius: 2em;
+    width: 150px;
+    justify-content: center;
+    font-size: small;
+    transition: 0.25s;
+}
+
+.itemCardFooter button:hover {
+    background-color: #011D62; 
+    transform: scale(0.95);
+}
+
+.bodyShop h1{
+    text-align: center;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #011D62;
+}

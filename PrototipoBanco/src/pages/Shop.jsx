@@ -1,27 +1,45 @@
 import React, { useEffect, useState } from 'react';
 
+import './Shop.css'
+
+import Navbar from '../components/Navbar';
+
 const Shop = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    // Faz a requisição para a API local
-    fetch('http://localhost:3000/items')
+    fetch('http://localhost:5100/items')
       .then(response => response.json())
-      .then(data => setItems(data.items))
+      .then(data => setItems(data)) 
       .catch(error => console.error('Erro ao buscar os itens:', error));
   }, []);
 
   return (
-    <div>
-      <h1>Produtos Disponíveis</h1>
-      {items.map(item => (
-        <div key={item.id}>
-          <img src={item.imagem} alt={item.nome} />
-          <h2>{item.nome}</h2>
-          <p>Quantidade: {item.quantidade}</p>
-          <p>Preço: R$ {item.preco}</p>
-        </div>
-      ))}
+    <div className='bodyShop'>
+      <Navbar />
+
+      <h1 className='container'>ViteShop</h1>
+      <div className='container cardItemGroup'>
+        {items.length > 0 ? (
+          items.map(item => (
+            <div className='itemCard' key={item.id} >
+              <div className='itemCardHeader'>
+                <img className='ImgItem' src={item.imagem} alt={item.nome}/>
+              </div>
+              <div className='itemCardBody'>
+                <h2 className='ItemName'>{item.nome}</h2>
+                <p className='ItemQtd'>Quantidade: {item.quantidade}</p>
+                <p className='ItemPrice'>Preço: R$ {item.preco}</p>
+              </div>
+              <div className='itemCardFooter'>
+                <button className='itemButton'>Comprar Agora!</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Nenhum produto disponível.</p>
+        )}
+      </div>
     </div>
   );
 }
