@@ -1,0 +1,2 @@
+json-server --watch database.json --port 5000
+json-server --watch shop.json --port 5100
