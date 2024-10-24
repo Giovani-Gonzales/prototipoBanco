@@ -10,7 +10,6 @@ const LoginPage = () => {
   const [verSenha, setVerSenha] = useState(false);
   const [agencia, setAgencia] = useState('');
   const [numeroConta, setNumeroConta] = useState('');
-  const [erro, setErro] = useState('');
 
   const MudaPagina = useNavigate()
 
@@ -19,27 +18,11 @@ const LoginPage = () => {
     
   }
 
-  const handleSubmit = async (e) => {
+  function handleLoginClick(e) {
     e.preventDefault();
+    MudaPagina("/overview");
+  }
 
-    try {
-      const response = await fetch(`http://localhost:5000/accounts?cpf=${cpf}&senha=${senha}&agencia=${agencia}&numeroConta=${numeroConta}`);
-      const data = await response.json();
-
-      if (data.length > 0) {
-
-        alert("Login bem-sucedido!");
-        MudaPagina("/overview")
-        
-      } else {
-
-        setErro("Informações inválidas. Verifique seus dados.");
-      }
-    } catch (error) {
-      console.error("Erro ao fazer login:", error);
-      setErro("Erro no servidor. Tente novamente mais tarde.");
-    }
-  };
 
   return (
     <div className='Logincontainer'>
@@ -47,7 +30,7 @@ const LoginPage = () => {
       <div className='Logincard'>
         <img className='Loginlogo' src={Logo} alt="Logo" />
 
-        <form onSubmit={handleSubmit}>
+        <form>
           <label>CPF</label>
           <input
             type="text"
@@ -87,10 +70,7 @@ const LoginPage = () => {
               {verSenha ? <FaRegEyeSlash /> : <FaRegEye />}
             </span>
           </div>
-
-          {erro && <p className='erro'>{erro}</p>}
-
-          <button className='LoginButton' type="submit">Entrar</button>
+          <button onClick={handleLoginClick} className='LoginButton' type='submit'>Entrar</button>
         </form>
 
         <Link to="/register" className="login-link">Criar uma conta</Link>

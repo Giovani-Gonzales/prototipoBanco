@@ -142,4 +142,39 @@
     margin-top: 100px;
 }
 
+@media (max-width: 768px) {
+    .quickMenu {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 2em;
+    }
+
+    .miniMenu {
+        width: 80%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .cardGroup {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 2em;
+    }
+
+    .cardInfo {
+        width: 90%; 
+        height: auto; 
+        padding: 1.5em;
+    }
+
+    .cardInfo .linkButton {
+        padding:10px;
+    }
+
+    .footerCard{
+        margin-top: 1.5em;
+    }
+}
 
