@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import './LoginPage.css';
 import Logo from '../assets/TransparenteRosa.png';
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [cpf, setCpf] = useState('');
@@ -10,27 +10,37 @@ const LoginPage = () => {
   const [verSenha, setVerSenha] = useState(false);
   const [agencia, setAgencia] = useState('');
   const [numeroConta, setNumeroConta] = useState('');
-
-  const MudaPagina = useNavigate()
+  const [erro, setErro] = useState('');
+  const MudaPagina = useNavigate();
 
   function MostrarSenha() {
     setVerSenha(!verSenha);
-    
   }
 
-  function handleLoginClick(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    MudaPagina("/overview");
-  }
+    try {
+      const response = await fetch(`http://localhost:5000/accounts?cpf=${cpf}&senha=${senha}&agencia=${agencia}&numeroConta=${numeroConta}`);
+      const data = await response.json();
 
+      if (data.length > 0) {
+        alert("Login bem-sucedido!");
+        MudaPagina("/overview");
+      } else {
+        setErro("Informações inválidas. Verifique seus dados.");
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      setErro("Erro no servidor. Tente novamente mais tarde.");
+    }
+  };
 
   return (
     <div className='Logincontainer'>
-
       <div className='Logincard'>
         <img className='Loginlogo' src={Logo} alt="Logo" />
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>CPF</label>
           <input
             type="text"
@@ -39,7 +49,7 @@ const LoginPage = () => {
             placeholder="Digite o CPF"
             required
           />
-          
+
           <label>N° da conta</label>
           <input
             type="text"
@@ -47,7 +57,7 @@ const LoginPage = () => {
             onChange={(e) => setNumeroConta(e.target.value)}
             placeholder="Digite o N° da conta"
           />
-          
+
           <label>Agência</label>
           <input
             type="text"
@@ -70,7 +80,10 @@ const LoginPage = () => {
               {verSenha ? <FaRegEyeSlash /> : <FaRegEye />}
             </span>
           </div>
-          <button onClick={handleLoginClick} className='LoginButton' type='submit'>Entrar</button>
+
+          {erro && <p className='erro-mensagem'>{erro}</p>}
+
+          <button className='LoginButton' type='submit'>Entrar</button>
         </form>
 
         <Link to="/register" className="login-link">Criar uma conta</Link>
